@@ -1,0 +1,33 @@
+/* Obsidian waybar style — managed by Faceless (profile: obsidian) */
+
+* {
+  font-family: "Noto Sans", "Symbols Nerd Font", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+  border: none;
+}
+
+window#waybar {
+  background: rgba(18, 20, 26, 0.88);
+  color: #bcc5d6;
+  border-radius: 10px;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  color: #5d6472;
+  border-radius: 6px;
+}
+#workspaces button.active {
+  color: #6eaccd;
+  background: rgba(110, 172, 205, 0.14);
+}
+#workspaces button:hover {
+  background: rgba(110, 172, 205, 0.22);
+}
+
+#window { color: #8a93a6; padding: 0 10px; }
+#clock { color: #bcc5d6; padding: 0 14px; font-weight: 600; }
+#pulseaudio, #network, #battery, #tray { padding: 0 9px; }
+#battery.warning { color: #d9a441; }
+#battery.critical { color: #e05662; }

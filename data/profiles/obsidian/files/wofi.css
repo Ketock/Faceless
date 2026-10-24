@@ -1,0 +1,32 @@
+/* Obsidian wofi style — managed by Faceless (profile: obsidian) */
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+}
+
+window {
+  background: rgba(13, 14, 18, 0.92);
+  border: 1px solid #2a2d38;
+  border-radius: 10px;
+}
+
+#input {
+  margin: 10px;
+  padding: 8px;
+  background: #16181f;
+  color: #bcc5d6;
+  border: none;
+  border-radius: 6px;
+}
+
+#inner-box { background: transparent; }
+
+#entry {
+  padding: 6px 10px;
+  color: #8a93a6;
+  border-radius: 6px;
+}
+#entry:selected {
+  background: rgba(110, 172, 205, 0.18);
+  color: #efe9db;
+}

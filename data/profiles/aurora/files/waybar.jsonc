@@ -1,0 +1,38 @@
+{
+  "//": "Aurora waybar config — managed by Faceless (profile: aurora)",
+  "layer": "top",
+  "height": 34,
+  "margin-top": 10,
+  "margin-left": 14,
+  "margin-right": 14,
+  "modules-left": ["hyprland/workspaces", "cpu", "memory"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "battery", "tray"],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": { "default": "◆", "active": "◈" },
+    "on-click": "activate"
+  },
+  "cpu": { "format": "󰻠 {usage}%" },
+  "memory": { "format": "󰍛 {percentage}%" },
+  "clock": {
+    "format": "{:%a %d %b · %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "network": {
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 wired",
+    "format-disconnected": "󰤭 offline"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "states": { "warning": 25, "critical": 10 }
+  },
+  "tray": { "icon-size": 16, "spacing": 8 }
+}

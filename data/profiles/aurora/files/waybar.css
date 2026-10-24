@@ -1,0 +1,36 @@
+/* Aurora waybar style — managed by Faceless (profile: aurora) */
+
+* {
+  font-family: "Noto Sans", "Symbols Nerd Font", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+  border: none;
+}
+
+window#waybar {
+  background: linear-gradient(90deg, rgba(28,12,50,0.9), rgba(16,30,46,0.9));
+  color: #eee2ff;
+  border: 1px solid rgba(128, 94, 247, 0.35);
+  border-radius: 14px;
+}
+
+#workspaces button {
+  padding: 0 7px;
+  color: #6d5f96;
+}
+#workspaces button.active {
+  color: #80e5c8;
+  text-shadow: 0 0 8px rgba(128, 229, 200, 0.8);
+}
+#workspaces button:hover { color: #a48bd4; }
+
+#cpu, #memory { color: #9d8fc9; padding: 0 9px; }
+#clock {
+  color: #eee2ff;
+  padding: 0 16px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+#pulseaudio, #network, #battery, #tray { padding: 0 9px; }
+#battery.warning { color: #d9a441; }
+#battery.critical { color: #e05662; }

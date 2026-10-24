@@ -1,0 +1,18 @@
+id = "aurora"
+name = "Aurora"
+version = "1.0.0"
+description = "A colorful, atmospheric desktop — deep violet nights lit by an emerald-cyan aurora glow. Concept previews are generated; the configs below are the substance."
+author = "Faceless maintainers"
+tags = ["colorful", "atmospheric", "night"]
+targets = ["hyprland", "waybar", "kitty", "wofi", "mako", "wallpaper"]
+requires = []
+previews = ["assets/preview.png"]
+wallpaper = "assets/wallpaper.png"
+
+[files.config]
+"hypr/hyprland.conf" = "files/hyprland.conf"
+"waybar/config.jsonc" = "files/waybar.jsonc"
+"waybar/style.css" = "files/waybar.css"
+"kitty/kitty.conf" = "files/kitty.conf"
+"wofi/style.css" = "files/wofi.css"
+"mako/config" = "files/mako.conf"

@@ -1,0 +1,24 @@
+/* Monochrome waybar style — managed by Faceless (profile: monochrome) */
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  min-height: 0;
+  border: none;
+}
+
+window#waybar {
+  background: #161616;
+  color: #c8c8c8;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  color: #555555;
+}
+#workspaces button.active { color: #f0f0f0; }
+
+#clock { color: #c8c8c8; padding: 0 12px; }
+#pulseaudio, #network, #battery { padding: 0 8px; color: #909090; }
+#battery.warning, #battery.critical { color: #ffffff; }

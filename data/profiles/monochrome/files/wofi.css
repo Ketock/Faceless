@@ -1,0 +1,32 @@
+/* Monochrome wofi style — managed by Faceless (profile: monochrome) */
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+}
+
+window {
+  background: rgba(16, 16, 16, 0.95);
+  border: 1px solid #2e2e2e;
+  border-radius: 4px;
+}
+
+#input {
+  margin: 8px;
+  padding: 8px;
+  background: #1e1e1e;
+  color: #c8c8c8;
+  border: none;
+  border-radius: 2px;
+}
+
+#inner-box { background: transparent; }
+
+#entry {
+  padding: 6px 10px;
+  color: #909090;
+  border-radius: 2px;
+}
+#entry:selected {
+  background: #3a3a3a;
+  color: #ffffff;
+}

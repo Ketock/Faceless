@@ -1,0 +1,36 @@
+{
+  "//": "Obsidian waybar config — managed by Faceless (profile: obsidian)",
+  "layer": "top",
+  "height": 30,
+  "margin-top": 6,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "battery", "tray"],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate"
+  },
+  "hyprland/window": { "max-length": 42 },
+  "clock": {
+    "format": "{:%a %d %b · %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "network": {
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 wired",
+    "format-disconnected": "󰤭 offline"
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "states": { "warning": 25, "critical": 10 }
+  },
+  "tray": { "icon-size": 15, "spacing": 8 }
+}

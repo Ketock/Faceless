@@ -1,0 +1,23 @@
+{
+  "//": "Monochrome waybar config — managed by Faceless (profile: monochrome)",
+  "layer": "top",
+  "height": 26,
+  "margin-top": 4,
+  "margin-left": 8,
+  "margin-right": 8,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "battery"],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate"
+  },
+  "clock": { "format": "{:%d %b %H:%M}" },
+  "pulseaudio": { "format": "{volume}%" },
+  "network": {
+    "format-wifi": "{essid}",
+    "format-ethernet": "eth",
+    "format-disconnected": "offline"
+  },
+  "battery": { "format": "{capacity}%", "states": { "warning": 25, "critical": 10 } }
+}

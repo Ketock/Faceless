@@ -1,0 +1,32 @@
+/* Aurora wofi style — managed by Faceless (profile: aurora) */
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 14px;
+}
+
+window {
+  background: rgba(20, 10, 38, 0.9);
+  border: 1px solid rgba(128, 94, 247, 0.45);
+  border-radius: 14px;
+}
+
+#input {
+  margin: 12px;
+  padding: 9px;
+  background: rgba(28, 16, 52, 0.9);
+  color: #eee2ff;
+  border: none;
+  border-radius: 8px;
+}
+
+#inner-box { background: transparent; }
+
+#entry {
+  padding: 6px 12px;
+  color: #9d8fc9;
+  border-radius: 8px;
+}
+#entry:selected {
+  background: rgba(128, 94, 247, 0.28);
+  color: #f4eeff;
+}
