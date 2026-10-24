@@ -1,0 +1,57 @@
+# Maintainer: Ketock <https://github.com/Ketock>
+# Faceless — the jester-masked Linux rice manager.
+# Build locally:  makepkg -sf   (from a checkout of this repository)
+
+pkgname=faceless
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A jester-masked Linux rice manager — apply curated desktop profiles safely."
+arch=("any")
+url="https://github.com/Ketock/Faceless"
+license=("MIT")
+depends=(
+    "gtk4"
+    "libadwaita"
+    "python"
+    "python-gobject"
+)
+optdepends=(
+    "hyprland: compositor integration"
+    "sway: compositor integration"
+    "waybar: status bar integration"
+    "wofi: launcher integration"
+    "rofi: launcher integration"
+    "kitty: terminal integration"
+    "alacritty: terminal integration"
+    "mako: notification daemon integration"
+    "swaync: notification daemon integration"
+    "hyprpaper: hyprland wallpaper backend"
+)
+makedepends=("python-build" "python-installer" "python-setuptools")
+provides=("faceless")
+conflicts=("faceless")
+source=("git+https://github.com/Ketock/Faceless.git")
+sha256sums=("SKIP")
+
+build() {
+    cd "Faceless"
+    python -m build --wheel --no-isolation
+}
+
+package() {
+    cd "Faceless"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Bundled sample profiles (read-only shared data)
+    install -d "$pkgdir/usr/share/faceless/profiles"
+    cp -r data/profiles/. "$pkgdir/usr/share/faceless/profiles/"
+
+    # Desktop entry + icon
+    install -Dm644 data/applications/faceless.desktop \
+        "$pkgdir/usr/share/applications/faceless.desktop"
+    install -Dm644 data/icons/hicolor/scalable/apps/faceless.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/faceless.svg"
+
+    install -Dm644 README.md "$pkgdir/usr/share/doc/faceless/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/faceless/LICENSE"
+}

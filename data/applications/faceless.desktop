@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Faceless
+GenericName=Rice Manager
+Comment=Change the look and feel of your Linux desktop in a few clicks
+Exec=faceless
+Icon=faceless
+Categories=Utility;DesktopSettings;GTK;
+Keywords=rice;theme;desktop;ricing;hyprland;waybar;
+StartupNotify=true
+Terminal=false
