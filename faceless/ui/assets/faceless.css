@@ -1,0 +1,361 @@
+/* ============================================================
+ * Faceless — "The Jester's Mask" design system
+ * Docs contract: docs/design-system.md
+ *
+ * Tokens are declared as CSS variables on :root. GTK's theme
+ * engine resolves var() against :root (verified on Gtk 4.22).
+ * Accent discipline: one accent per element, never all five.
+ * ============================================================ */
+
+:root {
+  --fl-ink: #0d0a0f;            /* app background: deep ink / plum-black */
+  --fl-charcoal: #17131b;       /* raised surfaces, cards */
+  --fl-charcoal-2: #221c28;     /* hover / secondary surfaces */
+  --fl-bone: #efe8dc;            /* primary text: warm bone white */
+  --fl-bone-dim: #a89fae;        /* secondary text, muted labels */
+  --fl-crimson: #c22f4a;         /* primary actions (Apply), danger accent */
+  --fl-crimson-deep: #8c1f36;    /* hover state for primary actions */
+  --fl-violet: #7d4bd6;          /* secondary accents, selection */
+  --fl-gold: #d9a441;            /* highlights, active-rice marks, focus */
+  --fl-success: #4fae7a;         /* success semantics */
+  --fl-warning: #d9a441;         /* warning semantics (shared with gold) */
+  --fl-danger: #e05662;          /* error semantics (distinct from brand) */
+  --fl-border: #2a2330;          /* card borders */
+  --fl-border-strong: #3a3042;   /* hovered borders */
+  --fl-sidebar-bg: #100d13;      /* sidebar surface, one step under ink */
+}
+
+/* ------------------------------------------------------------ base shell */
+
+.fl-root {
+  background-color: var(--fl-ink);
+  color: var(--fl-bone);
+  font-size: 15px;
+}
+
+/* Paint every structural shell surface with the ink ground so the fixed
+ * dark jester theme is coherent from window edge to edge. */
+.fl-root scrolledwindow,
+.fl-root viewport,
+.fl-root stack,
+.fl-root flowbox,
+.fl-root flowboxchild,
+.fl-root box,
+.fl-root grid,
+.fl-root toolbarview,
+.fl-root overlay {
+  background-color: transparent;
+}
+
+.fl-root headerbar {
+  background-color: var(--fl-ink);
+  border-bottom: 1px solid var(--fl-border);
+  box-shadow: none;
+  color: var(--fl-bone);
+}
+
+.fl-root headerbar windowtitle > .title {
+  color: var(--fl-bone);
+  font-weight: 700;
+}
+
+/* Mask notch: GTK's theme parser has no clip-path, so the "mask cut" is
+ * echoed with an asymmetric radius on header ornaments. */
+.fl-mask-header {
+  background-color: var(--fl-charcoal);
+  border: 1px solid var(--fl-border);
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  padding: 6px 14px;
+}
+
+/* ------------------------------------------------------------ sidebar */
+
+/* Higher specificity than Adwaita's `list.navigation-sidebar` base rule. */
+.fl-root .fl-sidebar,
+.fl-root .fl-sidebar list {
+  background-color: var(--fl-sidebar-bg);
+}
+
+.fl-sidebar {
+  border-right: 1px solid var(--fl-border);
+}
+
+.fl-brand-title {
+  font-size: 19px;
+}
+
+.fl-root .fl-sidebar row {
+  background-color: transparent;
+  border-radius: 10px;
+  margin: 2px 10px;
+  padding: 7px 10px;
+  color: var(--fl-bone-dim);
+  transition: background-color 160ms ease-out, color 160ms ease-out;
+}
+
+.fl-root .fl-sidebar row:hover {
+  background-color: var(--fl-charcoal-2);
+  color: var(--fl-bone);
+}
+
+.fl-root .fl-sidebar row:selected {
+  background-color: var(--fl-charcoal-2);
+  color: var(--fl-bone);
+}
+
+.fl-root .fl-sidebar row:selected .fl-nav-icon {
+  color: var(--fl-gold);
+}
+
+.fl-nav-diamond {
+  color: transparent;
+  font-size: 9px;
+  min-width: 12px;
+}
+
+.fl-root .fl-sidebar row:selected .fl-nav-diamond {
+  color: var(--fl-gold);
+}
+
+/* ------------------------------------------------------------ typography */
+
+.fl-display {
+  font-family: "Noto Serif Display", serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.fl-display-xl {
+  font-size: 30px;
+}
+
+.fl-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fl-bone-dim);
+}
+
+.fl-dim {
+  color: var(--fl-bone-dim);
+}
+
+.fl-mono {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--fl-bone-dim);
+}
+
+.fl-success { color: var(--fl-success); }
+.fl-danger  { color: var(--fl-danger); }
+.fl-warning-text { color: var(--fl-warning); }
+
+/* ------------------------------------------------------------ cards */
+
+.fl-card {
+  background-color: var(--fl-charcoal);
+  border: 1px solid var(--fl-border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.fl-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.fl-card-row-label {
+  color: var(--fl-bone-dim);
+  font-size: 13px;
+}
+
+/* ------------------------------------------------------------ profile cards */
+
+.fl-profile-card {
+  background-color: var(--fl-charcoal);
+  border: 1px solid var(--fl-border);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: none;
+  background-image: none;
+  outline: none;
+  transition: background-color 160ms ease-out, border-color 160ms ease-out;
+}
+
+.fl-profile-card:hover {
+  background-color: var(--fl-charcoal-2);
+  border-color: var(--fl-border-strong);
+}
+
+.fl-profile-card:active {
+  background-color: var(--fl-charcoal);
+}
+
+.fl-preview {
+  border-radius: 12px 12px 0 0;
+  background-color: var(--fl-charcoal-2);
+}
+
+.fl-platter {
+  background-color: var(--fl-charcoal-2);
+  border-radius: 12px;
+}
+
+.fl-platter .fl-diamond-glyph {
+  font-size: 34px;
+}
+
+/* ------------------------------------------------------------ chips */
+
+.fl-chip {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  background-color: var(--fl-charcoal-2);
+  border: 1px solid var(--fl-border);
+  color: var(--fl-bone-dim);
+}
+
+.fl-chip-full,
+.fl-chip-good {
+  background-color: rgba(79, 174, 122, 0.14);
+  border-color: rgba(79, 174, 122, 0.45);
+  color: var(--fl-success);
+}
+
+.fl-chip-partial {
+  background-color: rgba(217, 164, 65, 0.12);
+  border-color: rgba(217, 164, 65, 0.45);
+  color: var(--fl-gold);
+}
+
+.fl-chip-bad {
+  background-color: rgba(224, 86, 98, 0.13);
+  border-color: rgba(224, 86, 98, 0.45);
+  color: var(--fl-danger);
+}
+
+.fl-chip-gold {
+  background-color: rgba(217, 164, 65, 0.10);
+  border-color: rgba(217, 164, 65, 0.40);
+  color: var(--fl-gold);
+}
+
+.fl-chip-installed {
+  background-color: rgba(79, 174, 122, 0.14);
+  border-color: rgba(79, 174, 122, 0.40);
+  color: var(--fl-success);
+}
+
+.fl-chip-missing {
+  background-color: rgba(168, 159, 174, 0.06);
+  color: var(--fl-bone-dim);
+}
+
+/* ------------------------------------------------------------ apply button */
+
+.fl-apply-button {
+  background-color: var(--fl-crimson);
+  color: var(--fl-bone);
+  border: none;
+  border-radius: 9999px;
+  padding: 9px 28px;
+  font-weight: 700;
+  box-shadow: none;
+  background-image: none;
+  transition: background-color 160ms ease-out, color 160ms ease-out;
+}
+
+.fl-apply-button:hover {
+  background-color: var(--fl-crimson-deep);
+  color: var(--fl-bone);
+}
+
+.fl-apply-button:active {
+  background-color: var(--fl-crimson);
+  color: var(--fl-bone);
+}
+
+.fl-apply-button:disabled {
+  background-color: var(--fl-charcoal-2);
+  color: var(--fl-bone-dim);
+}
+
+.fl-apply-button:focus:focus-visible {
+  outline: 2px solid var(--fl-gold);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------ ornaments */
+
+.fl-diamond-line {
+  background-color: var(--fl-border);
+  min-height: 1px;
+  min-width: 48px;
+}
+
+.fl-diamond-glyph {
+  color: var(--fl-gold);
+  font-size: 11px;
+}
+
+.fl-active-diamond {
+  color: var(--fl-gold);
+  font-size: 13px;
+}
+
+/* Empty states: large diamond outline + bone-dim caption + recovery action. */
+.fl-empty {
+  margin: 32px;
+}
+
+.fl-empty-diamond {
+  color: var(--fl-gold);
+  font-size: 46px;
+}
+
+/* ------------------------------------------------------------ misc rows */
+
+.fl-history-icon {
+  min-width: 18px;
+}
+
+.fl-root list,
+.fl-root list > row {
+  background-color: transparent;
+  color: var(--fl-bone);
+}
+
+.fl-root list > row:hover {
+  background-color: var(--fl-charcoal-2);
+}
+
+.fl-root textview,
+.fl-root textview > text {
+  background-color: var(--fl-charcoal);
+  color: var(--fl-bone);
+  caret-color: var(--fl-bone);
+}
+
+.fl-root entry {
+  background-color: var(--fl-charcoal);
+  color: var(--fl-bone);
+}
+
+.fl-note-label {
+  font-size: 13px;
+  color: var(--fl-bone-dim);
+}
+
+/* ------------------------------------------------------------ switches */
+
+.fl-root switch:checked {
+  background-color: var(--fl-violet);
+}
+
+.fl-root switch:checked > slider {
+  background-color: var(--fl-bone);
+}
