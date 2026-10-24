@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "faceless"
+version = "0.1.0"
+description = "Faceless — a jester-masked Linux rice manager for Arch Linux and friends."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Ketock" }]
+keywords = ["linux", "rice", "ricing", "gtk4", "arch-linux", "hyprland", "waybar"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: X11 Applications :: GTK",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Topic :: Desktop Environment",
+]
+dependencies = [
+  "PyGObject>=3.46",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov", "ruff"]
+
+[project.scripts]
+faceless = "faceless.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/Ketock/Faceless"
+
+[tool.setuptools.packages.find]
+include = ["faceless*"]
+
+[tool.setuptools.package-data]
+"faceless.ui.assets" = ["*.css", "*.svg", "*.png"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "B", "UP"]
